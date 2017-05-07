@@ -1,0 +1,12 @@
+%h1 Users#login
+
+= form_tag "/users/login", method: :post do
+	Username
+	%input{:type => "text", :name => "username"}
+	Password
+	%input{:type => "password", :name => "password"}
+	%input{:type => "submit", :value => "Se connecter"}
+
+= link_to("S'inscrire",'inscription')
+
+  

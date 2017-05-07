@@ -10,13 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170507154551) do
+ActiveRecord::Schema.define(version: 20170507165005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "invited_students", force: :cascade do |t|
+    t.string   "surname"
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "notes", force: :cascade do |t|
     t.float    "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "subject_id"
+    t.integer  "student_id"
+    t.integer  "teacher_id"
+    t.integer  "test_id"
+  end
+
+  create_table "permited_teachers", force: :cascade do |t|
+    t.string   "surname"
+    t.string   "name"
+    t.string   "email"
+    t.string   "username"
+    t.string   "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -24,6 +46,8 @@ ActiveRecord::Schema.define(version: 20170507154551) do
   create_table "relations", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "student_id"
+    t.integer  "subject_id"
   end
 
   create_table "subjects", force: :cascade do |t|
@@ -33,6 +57,7 @@ ActiveRecord::Schema.define(version: 20170507154551) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "teacher_id"
+    t.integer  "student_id"
   end
 
   create_table "tests", force: :cascade do |t|
@@ -40,6 +65,8 @@ ActiveRecord::Schema.define(version: 20170507154551) do
     t.date     "test_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "teacher_id"
+    t.integer  "subject_id"
   end
 
   create_table "users", force: :cascade do |t|
