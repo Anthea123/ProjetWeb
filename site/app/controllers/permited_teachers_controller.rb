@@ -7,4 +7,11 @@ class PermitedTeachersController < ApplicationController
       redirect_to permited_teachers_create_path
     end
   end
+
+  def index
+    @permited_teachers = PermitedTeacher.all
+  end
+
+  def show
+  end
 end
