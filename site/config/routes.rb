@@ -19,6 +19,12 @@ Rails.application.routes.draw do
   get 'teachers/invite' => 'teachers#invite'
   post 'teachers/invite' => 'invited_students#create'
   resources :teachers
+
+  resources :notes
+
+  resources :subjects
+
+  resources :tests
   
 
   root 'users#login'

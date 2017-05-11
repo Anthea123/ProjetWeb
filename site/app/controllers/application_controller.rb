@@ -9,4 +9,25 @@ class ApplicationController < ActionController::Base
       @current_user = User.find(session[:user_id])
     end
   end
+
+  def admin_exclusive
+    if !@current_user.try(:admin?)
+			flash[:error] = "Accès interdit"
+			return redirect_to request.referrer || root_path
+		end
+  end
+
+  def teacher_exclusive
+    if !@current_user.try(:teacher?)
+			flash[:error] = "Accès interdit"
+			return redirect_to request.referrer || root_path
+		end
+  end
+
+  def student_exclusive
+    if !@current_user.try(:student?)
+			flash[:error] = "Accès interdit"
+			return redirect_to request.referrer || root_path
+		end
+  end
 end

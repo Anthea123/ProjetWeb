@@ -1,0 +1,15 @@
+%h2 Liste des Matières
+
+%table
+	%tr
+		%th Titre
+		%th Date de début
+		%th Date de fin
+	- @subjects.each do |subject|
+		%tr
+			%td #{subject.title}
+			%td #{subject.start_date}
+			%td #{subject.end_date}
+			%td 
+				= link_to('Modifier', edit_subject_path(subject))
+
