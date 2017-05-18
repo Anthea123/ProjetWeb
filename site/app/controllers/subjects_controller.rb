@@ -6,10 +6,12 @@ class SubjectsController < ApplicationController
 
 	def new
 		teacher_exclusive
+		@subject = Subject.new
 	end
 
 	def create
 		teacher_exclusive
+		@subject = Subject.create title: params[:title], start_date: params[:start_date], end_date: params[:end_date], teacher_id: @current_user.id
 	end
 
 	def show
