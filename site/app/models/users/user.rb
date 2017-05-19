@@ -6,7 +6,7 @@ class User < ApplicationRecord
 	validates :name, presence: true
 
 	def teacher?
-	return self.type == "Teacher"
+		return self.type == "Teacher"
 	end
 
 	def admin?
