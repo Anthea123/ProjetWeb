@@ -1,0 +1,20 @@
+%nav
+	%ul
+		%li
+			= link_to('Home', '/teachers/home')
+		%li
+			= link_to('Inviter un étudiant', '/teachers/invite')
+		%li
+			= link_to('Épreuves', tests_path)
+			%ul
+				%li
+					= link_to('Liste', tests_path)
+				%li
+					= link_to('Ajouter', new_test_path)
+		%li
+			= link_to('Matières', subjects_path)
+			%ul
+				%li
+					= link_to('Liste', subjects_path)
+				%li
+					= link_to('Ajouter', new_subject_path)
