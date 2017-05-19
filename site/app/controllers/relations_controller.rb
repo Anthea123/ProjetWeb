@@ -24,16 +24,9 @@ class RelationsController < ApplicationController
   # POST /relations
   # POST /relations.json
   def create
-    @relation = Relation.new(relation_params)
-
-    respond_to do |format|
-      if @relation.save
-        format.html { redirect_to @relation, notice: 'Relation was successfully created.' }
-        format.json { render :show, status: :created, location: @relation }
-      else
-        format.html { render :new }
-        format.json { render json: @relation.errors, status: :unprocessable_entity }
-      end
+    @relation = Relation.create student_id: params[:student_id], subject_id: params[:subject_id]
+    if @relation.save
+      redirect_to subject_path(params[:subject_id])
     end
   end
 
@@ -54,9 +47,9 @@ class RelationsController < ApplicationController
   # DELETE /relations/1
   # DELETE /relations/1.json
   def destroy
-    @relation.destroy
+    @relation.delete
     respond_to do |format|
-      format.html { redirect_to relations_url, notice: 'Relation was successfully destroyed.' }
+      format.html { redirect_to request.referrer, notice: 'Relation was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
