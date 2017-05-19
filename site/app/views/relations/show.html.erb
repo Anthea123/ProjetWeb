@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Index:</strong>
+  <%= @relation.index %>
+</p>
+
+<p>
+  <strong>New:</strong>
+  <%= @relation.new %>
+</p>
+
+<p>
+  <strong>Create:</strong>
+  <%= @relation.create %>
+</p>
+
+<p>
+  <strong>Show:</strong>
+  <%= @relation.show %>
+</p>
+
+<p>
+  <strong>Update:</strong>
+  <%= @relation.update %>
+</p>
+
+<p>
+  <strong>Delete:</strong>
+  <%= @relation.delete %>
+</p>
+
+<%= link_to 'Edit', edit_relation_path(@relation) %> |
+<%= link_to 'Back', relations_path %>

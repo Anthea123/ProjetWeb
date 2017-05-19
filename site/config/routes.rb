@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   resources :subjects
 
   resources :tests
+
+  resources :relations
   
 
   root 'users#login'
