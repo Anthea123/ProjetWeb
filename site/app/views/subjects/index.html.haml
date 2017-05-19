@@ -11,7 +11,11 @@
 			%td #{subject.start_date}
 			%td #{subject.end_date}
 			%td 
+				= link_to('Show', subject_path(subject))
+			%td 
 				= link_to('Modifier', edit_subject_path(subject))
+			%td 
+				= link_to('Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' })
 
 = link_to('Ajouter une matière', new_subject_path)
 
