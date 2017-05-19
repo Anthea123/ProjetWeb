@@ -11,7 +11,7 @@ class UsersController < ApplicationController
         end
       end
     else
-      redirect_to '/users/login'
+      redirect_to new_user_session_path
     end
   end
 
