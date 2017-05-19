@@ -1,0 +1,47 @@
+<%= form_for(relation) do |f| %>
+  <% if relation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(relation.errors.count, "error") %> prohibited this relation from being saved:</h2>
+
+      <ul>
+      <% relation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :index %>
+    <%= f.text_field :index %>
+  </div>
+
+  <div class="field">
+    <%= f.label :new %>
+    <%= f.text_field :new %>
+  </div>
+
+  <div class="field">
+    <%= f.label :create %>
+    <%= f.text_field :create %>
+  </div>
+
+  <div class="field">
+    <%= f.label :show %>
+    <%= f.text_field :show %>
+  </div>
+
+  <div class="field">
+    <%= f.label :update %>
+    <%= f.text_field :update %>
+  </div>
+
+  <div class="field">
+    <%= f.label :delete %>
+    <%= f.text_field :delete %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

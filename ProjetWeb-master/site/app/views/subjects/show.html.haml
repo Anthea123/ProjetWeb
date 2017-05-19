@@ -1,0 +1,39 @@
+.notice
+  = notice
+
+%h2
+  = @subject.title
+
+%h3 Étudiants inscrits
+
+%table
+  %th Nom
+  %th Prénom
+  - @relations.each do |relation|
+    - inscrit = Student.where(id: relation.student_id).first
+    %tr
+      %td #{inscrit.surname}
+      %td #{inscrit.name}
+      - if @current_user.teacher?
+        %td
+          = link_to('Enlever', relation, method: :delete, data: { confirm: 'Are you sure?' })
+    
+
+
+- if @current_user.teacher?
+  %h3 Ajouter des étudiants
+
+  %table
+    %th Nom
+    %th Prénom
+
+    - @students.each do |student|
+      %tr
+        %td #{student.surname}
+        %td #{student.name}
+        %td
+          = link_to('Ajouter', relations_path(@relation, :student_id => student.id, :subject_id => @subject.id), method: :post)
+
+
+= link_to 'Edit', edit_subject_path(@subject)
+= link_to 'Back', subjects_path
