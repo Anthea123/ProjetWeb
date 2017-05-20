@@ -1,5 +1,5 @@
 class SubjectsController < ApplicationController
-  before_action :set_subject, only: [:show, :edit, :update, :destroy]
+  before_action :set_subject, only: [:show, :edit, :update, :destroy, :exams]
 
   # GET /subjects
   # GET /subjects.json
@@ -38,7 +38,7 @@ class SubjectsController < ApplicationController
 
     respond_to do |format|
       if @subject.save
-        format.html { redirect_to @subject, notice: 'Subject was successfully created.' }
+        format.html { redirect_to @subject, notice: 'La matière a été insérée' }
         format.json { render :show, status: :created, location: @subject }
       else
         format.html { render :new }
@@ -47,12 +47,16 @@ class SubjectsController < ApplicationController
     end
   end
 
+  def exams
+    @exams = Test.where(subject_id: @subject.id)
+  end
+
   # PATCH/PUT /subjects/1
   # PATCH/PUT /subjects/1.json
   def update
     respond_to do |format|
       if @subject.update title: params[:title], start_date: params[:start_date], end_date: params[:end_date], teacher_id: @current_user.id
-        format.html { redirect_to @subject, notice: 'Subject was successfully updated.' }
+        format.html { redirect_to @subject, notice: 'La matière a été modifiée' }
         format.json { render :show, status: :ok, location: @subject }
       else
         format.html { render :edit }
@@ -66,7 +70,7 @@ class SubjectsController < ApplicationController
   def destroy
     @subject.delete
     respond_to do |format|
-      format.html { redirect_to subjects_url, notice: 'Subject was successfully destroyed.' }
+      format.html { redirect_to subjects_url, notice: 'La matière a été supprimée' }
       format.json { head :no_content }
     end
   end

@@ -39,7 +39,7 @@ class TestsController < ApplicationController
 
     respond_to do |format|
       if @test.save
-        format.html { redirect_to @test, notice: 'Test was successfully created.' }
+        format.html { redirect_to @test, notice: "L'épreuve a été créée"}
         format.json { render :show, status: :created, location: @test }
       else
         format.html { render :new }
@@ -53,7 +53,7 @@ class TestsController < ApplicationController
   def update
     respond_to do |format|
       if @test.update title: params[:title], test_date: params[:test_date], teacher_id: @current_user.id
-        format.html { redirect_to @test, notice: 'Test was successfully updated.' }
+        format.html { redirect_to @test, notice: "L'épreuve a été modifiée" }
         format.json { render :show, status: :ok, location: @test }
       else
         format.html { render :edit }
@@ -67,7 +67,7 @@ class TestsController < ApplicationController
   def destroy
     @test.destroy
     respond_to do |format|
-      format.html { redirect_to tests_url, notice: 'Test was successfully destroyed.' }
+      format.html { redirect_to tests_url, notice: "L'épreuve a été supprimée" }
       format.json { head :no_content }
     end
   end

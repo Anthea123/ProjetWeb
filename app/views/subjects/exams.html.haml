@@ -1,0 +1,16 @@
+%h2 Examens de #{@subject.title}
+
+%table
+  %th Titre
+  %th Date
+
+  - @exams.each do |exam|
+    %tr
+      %td #{exam.title}
+      %td #{exam.test_date}
+      %td
+        = link_to('Montrer', test_path(exam))
+      %td
+        = link_to('Éditer', edit_test_path(exam))
+      %td
+        = link_to('Destroy', exam, method: :delete, data: { confirm: 'Êtes-vous sûr?' })

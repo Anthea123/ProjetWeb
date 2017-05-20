@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :notes
 
   resources :subjects
+  get 'subjects/:id/exams' => 'subjects#exams', as: 'subject_exams'
 
   resources :tests
 

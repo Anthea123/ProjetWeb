@@ -2,16 +2,4 @@
 
 = render 'form', subject: @subject
 
-%table
-	%th Nom
-	%th Prénom
-
-	- @students.each do |student|
-		%tr
-			%td #{student.surname}
-			%td #{student.name}
-			%td
-				= link_to('Ajouter', relations_path(@relation, :student_id => student.id, :teacher_id => @current_user.id), method: :post)
-  
-
 = link_to 'Back', subjects_path

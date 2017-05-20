@@ -23,30 +23,23 @@
 %div{:style => "height:80px;"}
 %h1.text-center INSCRIPTION
 
-.span12{:style => "height:110px;"}
-%form.form-horizontal
-  %fieldset
+= form_tag 'inscription', method: :post do
+  .form-horizontal
     .form-group
-      = form_tag 'inscription', method: :post  do
-        %label.col-lg-5.control-label{:for => "inputName"}Name
-        .col-lg-2
-          %input{:type => "text", :name => "name"}
+      %label.col-lg-5.control-label{:for => "inputName"}Name
+      %input{:type => "text", :name => "name"}
     .form-group
       %label.col-lg-5.control-label{:for => "inputSurname"}Surname
-      .col-lg-2
-        %input{:type => "text", :name => "surname"}
+      %input{:type => "text", :name => "surname"}
     .form-group 
       %label.col-lg-5.control-label{:for => "inputUsername"}Username
-      .col-lg-2
-        %input{:type => "text", :name => "username"}
+      %input{:type => "text", :name => "username"}
     .form-group 
       %label.col-lg-5.control-label{:for => "inputPassword"}Password
-      .col-lg-2
-        %input{:type => "password", :name => "password"}
+      %input{:type => "password", :name => "password"}
     .form-group
       %label.col-lg-5.control-label{:for => "inputEmailadress"}Email address
-      .col-lg-2
-        %input{:type => "email", :name => "email"}
+      %input{:type => "email", :name => "email"}
     .form-group
       .col-lg-offset-5
         %input{:type => "submit", :value => "S'inscrire"}
