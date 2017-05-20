@@ -24,14 +24,14 @@ class NotesController < ApplicationController
   # POST /notes
   # POST /notes.json
   def create
-    @note = Note.new(note_params)
+    @note = Note.create(note: params[:note], teacher_id: params[:teacher_id], student_id: params[:student_id], subject_id: params[:subject_id], test_id: params[:test_id])
 
     respond_to do |format|
       if @note.save
-        format.html { redirect_to @note, notice: 'La note a été insérée' }
+        format.html { redirect_to test_grade_path(params[:test_id]), notice: 'La note a été insérée' }
         format.json { render :show, status: :created, location: @note }
       else
-        format.html { render :new }
+        format.html {redirect_to test_grade_path(params[:test_id]) }
         format.json { render json: @note.errors, status: :unprocessable_entity }
       end
     end

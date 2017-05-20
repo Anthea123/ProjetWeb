@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   get 'subjects/:id/exams' => 'subjects#exams', as: 'subject_exams'
 
   resources :tests
+  get 'tests/:id/grade' => 'tests#grade', as: 'test_grade'
+  post 'tests/:id/grade' => 'notes#create'
 
   resources :relations
   

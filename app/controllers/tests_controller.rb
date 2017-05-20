@@ -1,5 +1,5 @@
 class TestsController < ApplicationController
-  before_action :set_test, only: [:show, :edit, :update, :destroy]
+  before_action :set_test, only: [:show, :edit, :update, :destroy, :grade]
 
   # GET /tests
   # GET /tests.json
@@ -60,6 +60,11 @@ class TestsController < ApplicationController
         format.json { render json: @test.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def grade
+    @relation = Relation.where(subject_id: @test.subject_id)
+    @students = Student.all
   end
 
   # DELETE /tests/1

@@ -1,0 +1,9 @@
+%h2 Ajouter des notes à #{@test.title}
+
+- @students.each do |student|
+  %p
+    = student.surname
+    = student.name
+    %input{:max => "20", :min => "0", :name => "note", :type => "number", :value => 16}
+    - n = params[:note]
+    = link_to('Submit', notes_path(@note, :note => n, :teacher_id => @current_user.id, :student_id => student.id, :subject_id => @test.subject_id, :test_id => @test.id), method: :post)
