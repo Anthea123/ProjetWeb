@@ -1,41 +1,17 @@
-%nav.navbar.navbar-default{:style => "background-color:#00bfff"}
-  .container-fluid
-    .navbar-header 
-      %button.navbar-toggle.collapsed{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
-        %span.sr-only Toggle navigation
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
-      %a.navbar-brand{:href => "#"} Acceuil
-    #bs-example-navbar-collapse-1.collapse.navbar-collapse
-      %ul.nav.navbar-nav
-        %li
-          %a{:href => "#"}
-            Enseignant
-            %span.sr-only (current)
-        %li
-          %a{:href => "#"} Etudiant
-        %li
-          %a{:href => "#"} Matière
-        %li
-          %a{:href => "#"} Note
-
+%div{:style => "height:4px;"}
 %h2 Liste des professeurs en attente
-
-
 %table.table.table-striped.table-hover
   %tr.danger
     %th NOM
     %th PRÉNOM
     %th APPROUVER
+    %th REFUSER
   - @permited_teachers.each do |permited_teacher|
     %tr.info
       %td #{permited_teacher.surname}
       %td #{permited_teacher.name}
       %td 
         = link_to('Approuver', teachers_path(@teacher, :username => permited_teacher.username, :password => permited_teacher.password, :name => permited_teacher.name, :surname => permited_teacher.surname), method: :post)
-
-= link_to('Retour', administrators_home_path)
       %td
         = link_to('Refuser', permited_teacher_path(permited_teacher), method: :delete, data: { confirm: 'Are you sure?' })
 = link_to('Retour', administrators_home_path)
