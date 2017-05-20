@@ -14,4 +14,9 @@ class PermitedTeachersController < ApplicationController
 
   def show
   end
+
+  def destroy
+    PermitedTeacher.find(params[:id]).delete
+    redirect_to permited_teachers_index_path
+  end
 end
