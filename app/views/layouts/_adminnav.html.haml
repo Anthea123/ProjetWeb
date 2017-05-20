@@ -6,7 +6,7 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      %a.navbar-brand{:href => "http://localhost:3000/teachers/home"} Acceuil
+      %a.navbar-brand{:href => "http://localhost:3000/teachers/home"} Accueil
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       %ul.nav.navbar-nav
         %li
@@ -16,7 +16,8 @@
         %li
           %a{:href => "#"} Etudiant
         %li
-          %a{:href => "#"} Matière
-        %li
           %a{:href => "http://localhost:3000/users/logout"} Déconnexion
-
+      %ul.nav.navbar-nav.navbar-right
+        %li
+          = link_to("S'inscrire",'/users/inscription')
+ 

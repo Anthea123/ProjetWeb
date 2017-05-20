@@ -1,29 +1,3 @@
-%nav.navbar.navbar-default{:style => "background-color:#00bfff"}
-  .container-fluid
-    .navbar-header 
-      %button.navbar-toggle.collapsed{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
-        %span.sr-only Toggle navigation
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
-      %a.navbar-brand{:href => "#"} Acceuil
-    #bs-example-navbar-collapse-1.collapse.navbar-collapse
-      %ul.nav.navbar-nav
-        %li
-          %a{:href => "#"}
-            Enseignant
-            %span.sr-only (current)
-        %li
-          %a{:href => "#"} Etudiant
-        %li
-          %a{:href => "#"} Matière
-        %li
-          %a{:href => "#"} Note
-      %ul.nav.navbar-nav.navbar-right
-        %li
-          = link_to("S'inscrire",'/users/inscription')
-
-
 %div{:style => "height:120px;"}
 %h1.text-center GESTIONNAIRE DE NOTE
 
@@ -39,9 +13,8 @@
       .col-lg-offset-5
         %input{:type => "submit", :value => "Se connecter"}
 
-= link_to("S'inscrire",'/users/inscription')
 
-%div{:style => "height:120px;"}
+
 
 
 
