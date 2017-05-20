@@ -23,45 +23,27 @@
 %h2 Liste des professeurs en attente
 
 
-
-
-
 %table.table.table-striped.table-hover
-  %tr
-    %th #
-    %th ID
+  %tr.danger
     %th NOM
     %th PRÉNOM
+    %th APPROUVER
   - @permited_teachers.each do |permited_teacher|
-    %tr
-      %td 2
-      %td Column content
+    %tr.info
       %td #{permited_teacher.surname}
       %td #{permited_teacher.name}
       %td 
         = link_to('Approuver', teachers_path(@teacher, :username => permited_teacher.username, :password => permited_teacher.password, :name => permited_teacher.name, :surname => permited_teacher.surname), method: :post)
+
+= link_to('Retour', administrators_home_path)
       %td
         = link_to('Refuser', permited_teacher_path(permited_teacher), method: :delete, data: { confirm: 'Are you sure?' })
 = link_to('Retour', administrators_home_path)
- 
 
 
 
 
 
-
-%table
-  %tr
-    %th Nom  
-    %th Prénom
-  - @permited_teachers.each do |permited_teacher|
-    %tr
-      %td #{permited_teacher.surname}
-      %td #{permited_teacher.name}
-      %td 
-        = link_to('Approuver', teachers_path(@teacher, :username => permited_teacher.username, :password => permited_teacher.password, :name => permited_teacher.name, :surname => permited_teacher.surname), method: :post)
-
-= link_to('Retour', administrators_home_path)
 
 
 
