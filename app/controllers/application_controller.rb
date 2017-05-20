@@ -30,4 +30,11 @@ class ApplicationController < ActionController::Base
 			return redirect_to request.referrer || root_path
 		end
   end
+
+  def not_logged_in
+    if @current_user
+      flash[:error] = "Accès interdit"
+			return redirect_to request.referrer || root_path
+    end
+  end
 end

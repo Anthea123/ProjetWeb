@@ -31,6 +31,7 @@ class UsersController < ApplicationController
   end
 
   def inscription
+    not_logged_in
   end
 
   def logout
