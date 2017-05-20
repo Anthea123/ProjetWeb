@@ -1,9 +1,22 @@
 %h2 Ajouter des notes à #{@test.title}
 
+
 - @students.each do |student|
   %p
     = student.surname
     = student.name
-    %input{:max => "20", :min => "0", :name => "note", :type => "number", :value => 16}
-    - n = params[:note]
-    = link_to('Submit', notes_path(@note, :note => n, :teacher_id => @current_user.id, :student_id => student.id, :subject_id => @test.subject_id, :test_id => @test.id), method: :post)
+    - n = Note.where(student_id: student.id, test_id: @test.id).first
+    - if n
+      = form_tag test_grade_path(@test), method: :patch do
+        %input{:max => "20", :min => "0",:name => "note", :type => "number", :value => n.note}
+        %input{:name => "student_id", :type => "hidden", :value => student.id}
+        %input{:name => "subject_id", :type => "hidden", :value => @test.subject_id}
+        %input{:name => "test_id", :type => "hidden", :value => @test.id}
+        %input{:type => "submit", :value => "Modifier"}
+    - else
+      = form_tag test_grade_path(@test), method: :post do
+        %input{:max => "20", :min => "0",:name => "note", :type => "number"}
+        %input{:name => "student_id", :type => "hidden", :value => student.id}
+        %input{:name => "subject_id", :type => "hidden", :value => @test.subject_id}
+        %input{:name => "test_id", :type => "hidden", :value => @test.id}
+        %input{:type => "submit", :value => "Valider"}

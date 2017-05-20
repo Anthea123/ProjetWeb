@@ -63,8 +63,9 @@ class TestsController < ApplicationController
   end
 
   def grade
-    @relation = Relation.where(subject_id: @test.subject_id)
-    @students = Student.all
+    @note = Note.new
+    @relation = Relation.select("student_id").where(subject_id: @test.subject_id)
+    @students = Student.where(id: @relation).order(:surname)
   end
 
   # DELETE /tests/1

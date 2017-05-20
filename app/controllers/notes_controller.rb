@@ -24,7 +24,7 @@ class NotesController < ApplicationController
   # POST /notes
   # POST /notes.json
   def create
-    @note = Note.create(note: params[:note], teacher_id: params[:teacher_id], student_id: params[:student_id], subject_id: params[:subject_id], test_id: params[:test_id])
+    @note = Note.create(note: params[:note], teacher_id: @current_user.id, student_id: params[:student_id], subject_id: params[:subject_id], test_id: params[:test_id])
 
     respond_to do |format|
       if @note.save
@@ -41,11 +41,11 @@ class NotesController < ApplicationController
   # PATCH/PUT /notes/1.json
   def update
     respond_to do |format|
-      if @note.update(note_params)
-        format.html { redirect_to @note, notice: 'La note a été actualisée' }
+      if @note.update note: params[:note], teacher_id: @current_user.id, student_id: params[:student_id], subject_id: params[:subject_id], test_id: params[:test_id]
+        format.html { redirect_to test_grade_path(params[:test_id]), notice: 'La note a été actualisée' }
         format.json { render :show, status: :ok, location: @note }
       else
-        format.html { render :edit }
+        format.html { test_grade_path(params[:test_id]) }
         format.json { render json: @note.errors, status: :unprocessable_entity }
       end
     end
@@ -64,7 +64,7 @@ class NotesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_note
-      @note = Note.find(params[:id])
+      @note = Note.where(test_id: params[:test_id], student_id: params[:student_id]).first
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

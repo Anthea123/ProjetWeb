@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   resources :tests
   get 'tests/:id/grade' => 'tests#grade', as: 'test_grade'
   post 'tests/:id/grade' => 'notes#create'
+  patch 'tests/:id/grade' => 'notes#update'
 
   resources :relations
   

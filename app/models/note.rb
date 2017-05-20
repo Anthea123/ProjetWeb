@@ -4,4 +4,5 @@ class Note < ApplicationRecord
 	belongs_to :student, :class_name => 'Student', :foreign_key => 'student_id'
 	belongs_to :subject, :class_name => 'Subject', :foreign_key => 'subject_id'
 	belongs_to :test, :class_name => 'Test', :foreign_key => 'test_id'
+	validates :student_id, uniqueness: { scope: :test_id }
 end
