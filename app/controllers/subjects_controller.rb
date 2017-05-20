@@ -34,7 +34,7 @@ class SubjectsController < ApplicationController
   def create
     teacher_exclusive
     @subject = Subject.create title: params[:title], start_date: params[:start_date], end_date: params[:end_date], teacher_id: @current_user.id
-	end
+	
 
     respond_to do |format|
       if @subject.save

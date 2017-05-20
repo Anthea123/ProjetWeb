@@ -21,8 +21,8 @@ class UsersController < ApplicationController
   def check
     @current_user = User.where(username: params[:username], password: params[:password]).first
     if @current_user
-      flash[:info] = "Bienvenue #{@current_user.username} !"
       session[:user_id] = @current_user.id
+      flash[:info] = "Bienvenue #{@current_user.username} !"
       redirect_to "/users/home"
     else
       flash[:info] = "Échec de la connexion"

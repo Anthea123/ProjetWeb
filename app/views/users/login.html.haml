@@ -28,15 +28,14 @@
 %h1.text-center GESTIONNAIRE DE NOTE
 
 .span12{:style => "height:130px;"}
-%form.form-horizontal
+= form_tag "/users/login", {method: :post, :class => 'form-horizontal' } do
   %fieldset
     .form-group
-      = form_tag "/users/login", method: :post do
-        %label.col-lg-5.control-label{:for => "inputUsername"} Username
-        .col-lg-2
-          %input#inputUsername.form-control{:placeholder => "Username", :type => "text"}/
+      %label.col-lg-5.control-label{:for => "username"} Username
+      .col-lg-2
+        %input#inputUsername.form-control{:placeholder => "Username", :type => "text"}/
     .form-group
-      %label.col-lg-5.control-label{:for => "inputPassword"} Password
+      %label.col-lg-5.control-label{:for => "password"} Password
       .col-lg-2
         %input#inputPassword.form-control{:placeholder => "Password", :type => "password"}/
     .form-group
