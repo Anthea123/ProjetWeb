@@ -1,0 +1,17 @@
+= form_tag user_path(@current_user), method: :patch do
+  %p
+    Nom
+    %input{:type => "text", :name => "surname", :value => @current_user.surname}
+  %p
+    Prénom
+    %input{:type => "text", :name => "name", :value => @current_user.name}
+  %p
+    Nom d'utilisateur
+    %input{:type => "text", :name => "username", :value => @current_user.username}
+  %p
+    Mot de passe
+    %input{:type => "password", :name => "password", :value => @current_user.password}
+  %p
+    %input{:type => "submit", :value => "Enregistrer les changements"}
+    
+= button_to('Supprimer votre profil', user_path(@current_user), method: :delete, data: { confirm: 'Êtes-vous sûr?' })

@@ -1,0 +1,20 @@
+%nav
+  %ul
+    %li
+      = link_to('Home', '/students/home')
+    %li
+      = link_to('Profil', user_path(@current_user.id))
+      %ul
+        %li
+          = link_to('Voir', user_path(@current_user.id))
+        %li
+          = link_to('Éditer', edit_user_path(@current_user.id))
+    %li
+      = link_to('Épreuves', tests_path)
+      %ul
+        %li
+          = link_to('Liste', tests_path)
+        %li
+          = link_to('Notes', notes_path)
+    %li
+      = link_to('Matières', subjects_path)

@@ -19,8 +19,10 @@
         <td><%= test.test_date %></td>
         <td><%= Subject.where(id: test.subject_id).first.title%></td>
         <td><%= link_to 'Show', test %></td>
-        <td><%= link_to 'Edit', edit_test_path(test) %></td>
-        <td><%= link_to 'Destroy', test, method: :delete, data: { confirm: 'Êtes-vous sûr?' } %></td>
+        <% if @current_user.teacher? %> 
+          <td><%= link_to 'Edit', edit_test_path(test) %></td>
+          <td><%= link_to 'Destroy', test, method: :delete, data: { confirm: 'Êtes-vous sûr?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -28,5 +30,7 @@
 
 <br>
 
-<%= link_to 'New Test', new_test_path %>
+<% if @current_user.teacher? %>
+  <%= link_to 'New Test', new_test_path %>
+<% end %>
 

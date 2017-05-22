@@ -1,0 +1,20 @@
+%h2 Liste des utilisateurs
+
+%table
+  %thead
+    %th Nom
+    %th Prénom
+    %th Nom d'utilisateur
+    %th Type de compte
+    %th Date d'inscription
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td #{user.surname}
+        %td #{user.name}
+        %td #{user.username}
+        %td #{user.type}
+        %td #{user.created_at}
+        %td
+          = link_to('Supprimer compte', user_path(user), method: :delete, data: { confirm: 'Êtes-vous sûr?' })
+

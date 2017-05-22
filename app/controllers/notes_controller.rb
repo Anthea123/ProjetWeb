@@ -4,7 +4,15 @@ class NotesController < ApplicationController
   # GET /notes
   # GET /notes.json
   def index
-    @notes = Note.all
+    if @current_user
+      if @current_user.teacher?
+        @notes = Note.where(teacher_id: @current_user.id).order(:subject_id, :test_id)
+      else
+        @notes = Note.where(student_id: @current_user.id)
+      end
+    else
+      redirect_to request.referrer || root_path
+    end
   end
 
   # GET /notes/1
@@ -14,16 +22,19 @@ class NotesController < ApplicationController
 
   # GET /notes/new
   def new
+    teacher_exclusive
     @note = Note.new
   end
 
   # GET /notes/1/edit
   def edit
+    teacher_exclusive
   end
 
   # POST /notes
   # POST /notes.json
   def create
+    teacher_exclusive
     @note = Note.create(note: params[:note], teacher_id: @current_user.id, student_id: params[:student_id], subject_id: params[:subject_id], test_id: params[:test_id])
 
     respond_to do |format|
@@ -40,6 +51,7 @@ class NotesController < ApplicationController
   # PATCH/PUT /notes/1
   # PATCH/PUT /notes/1.json
   def update
+    teacher_exclusive
     respond_to do |format|
       if @note.update note: params[:note], teacher_id: @current_user.id, student_id: params[:student_id], subject_id: params[:subject_id], test_id: params[:test_id]
         format.html { redirect_to test_grade_path(params[:test_id]), notice: 'La note a été actualisée' }
@@ -54,7 +66,8 @@ class NotesController < ApplicationController
   # DELETE /notes/1
   # DELETE /notes/1.json
   def destroy
-    @note.destroy
+    teacher_exclusive
+    @note.delete
     respond_to do |format|
       format.html { redirect_to notes_url, notice: 'La note a été suprimée' }
       format.json { head :no_content }

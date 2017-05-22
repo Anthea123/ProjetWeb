@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'users/inscription' => 'users#inscription'
   post 'users/inscription' => 'permited_teachers#create'
   get 'users/logout'
+  resources :users, only: [:index, :edit, :show, :update, :destroy]
   
   resources :permited_teachers
   

@@ -39,4 +39,42 @@ class UsersController < ApplicationController
     session[:user_id] = nil
     redirect_to "/users/login"
   end
+
+  def index
+    admin_exclusive
+    @users = User.all
+  end
+
+  def edit
+  end
+
+  def show
+  end
+
+  def update
+    respond_to do |format|
+      if @current_user.update username: params[:username], password: params[:password], surname: params[:surname], name: params[:name]
+        format.html { redirect_to user_path(@current_user), notice: "Votre profil a été modifié" }
+        format.json { render :show, status: :ok, location: @current_user }
+      else
+        format.html { render :edit }
+        format.json { render json: @current_user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def destroy
+    User.find(params[:id]).delete
+    if !@current_user
+      respond_to do |format|
+        format.html { redirect_to root_path, notice: "Le compte a été supprimé" }
+        format.json { head :no_content }
+      end
+    else
+       respond_to do |format|
+        format.html { redirect_to users_path, notice: "Le compte a été supprimé" }
+        format.json { head :no_content }
+      end
+    end
+  end
 end

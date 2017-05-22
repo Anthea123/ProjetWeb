@@ -24,17 +24,20 @@ class TestsController < ApplicationController
 
   # GET /tests/new
   def new
+    teacher_exclusive
     @test = Test.new
     @subjects = Subject.where(teacher_id: @current_user.id)
   end
 
   # GET /tests/1/edit
   def edit
+    teacher_exclusive
   end
 
   # POST /tests
   # POST /tests.json
   def create
+    teacher_exclusive
     @test = Test.create title: params[:title], test_date: params[:test_date], subject_id: params[:subject_id],teacher_id: @current_user.id
 
     respond_to do |format|
@@ -51,6 +54,7 @@ class TestsController < ApplicationController
   # PATCH/PUT /tests/1
   # PATCH/PUT /tests/1.json
   def update
+    teacher_exclusive
     respond_to do |format|
       if @test.update title: params[:title], test_date: params[:test_date], teacher_id: @current_user.id
         format.html { redirect_to @test, notice: "L'épreuve a été modifiée" }
@@ -63,6 +67,7 @@ class TestsController < ApplicationController
   end
 
   def grade
+    teacher_exclusive
     @note = Note.new
     @relation = Relation.select("student_id").where(subject_id: @test.subject_id)
     @students = Student.where(id: @relation).order(:surname)
@@ -71,6 +76,7 @@ class TestsController < ApplicationController
   # DELETE /tests/1
   # DELETE /tests/1.json
   def destroy
+    teacher_exclusive
     @test.destroy
     respond_to do |format|
       format.html { redirect_to tests_url, notice: "L'épreuve a été supprimée" }

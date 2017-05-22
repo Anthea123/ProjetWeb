@@ -10,7 +10,7 @@ class TeachersController < ApplicationController
   end
 
   def home
-
+    teacher_exclusive
   end
 
   def show
@@ -18,6 +18,6 @@ class TeachersController < ApplicationController
   end
 
   def invite
-
+    teacher_exclusive
   end
 end

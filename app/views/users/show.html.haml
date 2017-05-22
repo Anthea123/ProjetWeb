@@ -1,0 +1,12 @@
+%h2 Votre profil
+
+%p
+  Nom: #{@current_user.surname}   
+%p
+  Prénom: #{@current_user.name}
+%p
+  Nom d'utilisateur: #{@current_user.username}
+%p
+  Type de compte: #{@current_user.type}
+
+= link_to('Éditer', edit_user_path(@current_user.id))

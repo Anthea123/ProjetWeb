@@ -1,14 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Index:</strong>
-  <%= @test.title %>
-</p>
+<h2> <%= @test.title%></h2>
 
-
-<%= link_to 'Edit', edit_test_path(@test) %> |
+<p> Date: <%= @test.test_date%> </p>
 
 <%= link_to 'Back', tests_path %> |
-
-<%= link_to 'Noter', test_grade_path(@test) %> 
+<% if @current_user.teacher? %>
+  <%= link_to 'Edit', edit_test_path(@test) %> |
+  <%= link_to 'Noter', test_grade_path(@test) %> 
+<% end %>
 

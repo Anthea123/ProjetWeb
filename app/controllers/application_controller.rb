@@ -31,8 +31,8 @@ class ApplicationController < ActionController::Base
 		end
   end
 
-  def not_logged_in
-    if @current_user
+  def logged_in
+    if @current_user == nil
       flash[:error] = "Accès interdit"
 			return redirect_to request.referrer || root_path
     end

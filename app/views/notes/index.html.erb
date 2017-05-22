@@ -1,37 +1,64 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Notes</h1>
+<h2>Notes</h2>
 
-<table>
+<% if @current_user.teacher? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Matière</th>
+        <th>Épreuve</th>
+        <th>Date</th>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Note</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @notes.each do |note| %>
+        <% test = Test.where(id: note.test_id).first%>
+        <% student = Student.where(id: note.student_id).first%>
+        <tr>
+          <td><%= Subject.where(id: note.subject_id).first.title%></td>
+          <td><%= test.title%></td>
+          <td><%= test.test_date %></td>
+          <td><%= student.surname %></td>
+          <td><%= student.name %></td>
+          <td><%= note.note %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Note', new_note_path %>
+<% end %>
+
+<% if @current_user.student? %>
+  <table>
   <thead>
     <tr>
-      <th>Index</th>
-      <th>New</th>
-      <th>Create</th>
-      <th>Show</th>
-      <th>Update</th>
-      <th>Delete</th>
-      <th colspan="3"></th>
+      <th>Matière</th>
+      <th>Épreuve</th>
+      <th>Date</th>
+      <th>Note</th>
     </tr>
   </thead>
 
   <tbody>
     <% @notes.each do |note| %>
-      <tr>
-        <td><%= note.index %></td>
-        <td><%= note.new %></td>
-        <td><%= note.create %></td>
-        <td><%= note.show %></td>
-        <td><%= note.update %></td>
-        <td><%= note.delete %></td>
-        <td><%= link_to 'Show', note %></td>
-        <td><%= link_to 'Edit', edit_note_path(note) %></td>
-        <td><%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+       <% test = Test.where(id: note.test_id).first%>
+       <tr>
+          <td><%= Subject.where(id: note.subject_id).first.title%></td>
+          <td><%= test.title%></td>
+          <td><%= test.test_date %></td>
+          <td><%= note.note %></td>
+       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Note', new_note_path %>
+<% end %>

@@ -1,21 +1,23 @@
 %h2 Liste des Matières
 
 %table
-	%tr
-		%th Titre
-		%th Date de début
-		%th Date de fin
-	- @subjects.each do |subject|
-		%tr
-			%td #{subject.title}
-			%td #{subject.start_date}
-			%td #{subject.end_date}
-			%td 
-				= link_to('Show', subject_path(subject))
-			%td 
-				= link_to('Modifier', edit_subject_path(subject))
-			%td 
-				= link_to('Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' })
+  %tr
+    %th Titre
+    %th Date de début
+    %th Date de fin
+  - @subjects.each do |subject|
+    %tr
+      %td #{subject.title}
+      %td #{subject.start_date}
+      %td #{subject.end_date}
+      - if @current_user.teacher?
+        %td 
+          = link_to('Show', subject_path(subject))
+        %td 
+          = link_to('Modifier', edit_subject_path(subject))
+        %td 
+          = link_to('Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' })
 
-= link_to('Ajouter une matière', new_subject_path)
+- if @current_user.teacher?
+  = link_to('Ajouter une matière', new_subject_path)
 

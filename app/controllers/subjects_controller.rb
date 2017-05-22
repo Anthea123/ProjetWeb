@@ -4,8 +4,14 @@ class SubjectsController < ApplicationController
   # GET /subjects
   # GET /subjects.json
   def index
-    teacher_exclusive
-		@subjects = Subject.where(teacher_id: @current_user.id)
+    logged_in
+    if @current_user.teacher?
+      @subjects = Subject.where(teacher_id: @current_user.id)
+    elsif @current_user.student?
+      @subjects = Subject.where(id: Relation.select(:subject_id).where(student_id: @current_user.id))
+    else
+      @subjects = Subject.all
+    end
   end
 
   # GET /subjects/1
