@@ -1,21 +1,21 @@
-%h2 Éditer votre profil
-
+%div{:style => "height:120px;"}
 = form_tag user_path(@current_user), method: :patch do
-  %p
-    Nom
-    %input{:type => "text", :name => "surname", :value => @current_user.surname}
-  %p
-    Prénom
-    %input{:type => "text", :name => "name", :value => @current_user.name}
-  %p
-    Nom d'utilisateur
-    %input{:type => "text", :name => "username", :value => @current_user.username}
-  %p
-    Mot de passe
-    %input{:type => "password", :name => "password", :value => @current_user.password}
-  %p
-    %input{:type => "submit", :value => "Enregistrer les changements"}
-    
-= button_to('Supprimer votre profil', user_path(@current_user), method: :delete, data: { confirm: 'Êtes-vous sûr?' })
+  .form-horizontal
+    .form-group
+      %label.col-lg-5.control-label{:for => "inputName"}Nom
+      %input{:type => "text", :name => "surname", :value => @current_user.surname}
+    .form-group
+      %label.col-lg-5.control-label{:for => "inputSurname"}Prénom
+      %input{:type => "text", :name => "name", :value => @current_user.name}
+    .form-group 
+      %label.col-lg-5.control-label{:for => "inputUsername"}Nom d'utilisateur
+      %input{:type => "text", :name => "username", :value => @current_user.username}
+    .form-group 
+      %label.col-lg-5.control-label{:for => "inputPassword"}Mot de passe
+      %input{:type => "password", :name => "password", :value => @current_user.password}
+    .form-group
+      .col-lg-offset-5
+        %input{:type => "submit", :value => "Enregistrer les changements"}
+
 
 = link_to('Retour', user_path(@current_user))
