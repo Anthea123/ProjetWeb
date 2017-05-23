@@ -1,30 +1,39 @@
-%nav
-  %ul
-    %li
-      = link_to('Home', '/teachers/home')
 
-    %li
-      = link_to('Profil', user_path(@current_user.id))
-      %ul
+%nav.navbar.navbar-default{:style => "background-color:#00bfff"}
+  .container-fluid
+    .navbar-header 
+      %button.navbar-toggle.collapsed{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand{:href => "#"} Page enseignant
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      %ul.nav.navbar-nav
         %li
-          = link_to('Voir', user_path(@current_user.id))
+          %a{:href => "http://localhost:3000/teachers/home"}
+            Home
+            %span.sr-only (current)
         %li
-          = link_to('Éditer', edit_user_path(@current_user.id))
-    %li
-      = link_to('Inviter un étudiant', '/teachers/invite')
-    %li
-      = link_to('Épreuves', tests_path)
-      %ul
+          = link_to('Profil', user_path(@current_user.id))
         %li
-          = link_to('Liste', tests_path)
+          = link_to('Inviter un étudiant', '/teachers/invite')
         %li
-          = link_to('Ajouter', new_test_path)
-    %li
-      = link_to('Matières', subjects_path)
-      %ul
+          = link_to('Épreuves', tests_path)
         %li
-          = link_to('Liste', subjects_path)
+          = link_to('Matières', subjects_path)
         %li
-          = link_to('Ajouter', new_subject_path)
-    %li
-      = link_to('Notes', notes_path)
+          = link_to('Notes', notes_path)
+      %ul.nav.navbar-nav.navbar-right
+        %li
+          %a{:href => "http://localhost:3000/users/logout"} Déconnexion
+      
+          
+
+
+
+
+
+  
+ 
+   
