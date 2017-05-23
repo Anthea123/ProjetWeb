@@ -18,8 +18,8 @@ class SubjectsController < ApplicationController
   # GET /subjects/1.json
   def show
     if @current_user
-      @students = Student.all
-      @relations = Relation.where(subject: @subject.id)
+      @students = Student.where.not(id: Relation.select(:student_id).where(subject_id: @subject.id))
+      @inscrits = Student.where(id: Relation.select(:student_id).where(subject_id: @subject.id))
     else
       redirect_to request.referrer || root_path
     end

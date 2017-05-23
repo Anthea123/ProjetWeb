@@ -4,9 +4,19 @@
 
 <p> Date: <%= @test.test_date%> </p>
 
+<% if @current_user.student? %>
+  <% if @note %>
+    <p> Note: <%= @note.note%> </p>
+  <% else %>
+    <p> <%= @message%> </p>
+  <% end %>
+<% end %>
+
 <%= link_to 'Retour', tests_path %> |
 <% if @current_user.teacher? %>
   <%= link_to 'Modifier', edit_test_path(@test) %> |
   <%= link_to 'Noter', test_grade_path(@test) %> 
 <% end %>
+
+
 

@@ -8,7 +8,7 @@ class TestsController < ApplicationController
       if @current_user.teacher?
         @tests = Test.where(teacher_id: @current_user.id)
       elsif @current_user.student?
-        @tests = Test.where(subject_id: Relation.where(student_id: @current_user.id))
+        @tests = Test.where(subject_id: Relation.select(:subject_id).where(student_id: @current_user.id))
       else
         @tests = Test.all
       end      
@@ -20,6 +20,11 @@ class TestsController < ApplicationController
   # GET /tests/1
   # GET /tests/1.json
   def show
+    if @current_user.student?
+      if !@note = Note.where(student_id: @current_user.id, test_id: @test.id).first
+        @message = "Pas de note"
+      end  
+    end
   end
 
   # GET /tests/new

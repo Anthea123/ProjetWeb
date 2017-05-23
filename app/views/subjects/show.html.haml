@@ -1,6 +1,3 @@
-.notice
-  = notice
-
 %h2
   = @subject.title
 
@@ -9,8 +6,8 @@
 %table
   %th Nom
   %th Prénom
-  - @relations.each do |relation|
-    - inscrit = Student.where(id: relation.student_id).first
+  - @inscrits.each do |inscrit|
+    - relation = Relation.where(student_id: inscrit.id, subject_id: @subject.id).first
     %tr
       %td #{inscrit.surname}
       %td #{inscrit.name}

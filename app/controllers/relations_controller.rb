@@ -49,7 +49,7 @@ class RelationsController < ApplicationController
   def destroy
     @relation.delete
     respond_to do |format|
-      format.html { redirect_to request.referrer, notice: 'Relation was successfully destroyed.' }
+      format.html { redirect_to request.referrer, notice: "L'étudiant n'est plus inscrit dans cette matière" }
       format.json { head :no_content }
     end
   end

@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
     if session[:user_id]
       @current_user = User.find(session[:user_id])
     end
+    
+  rescue ActiveRecord::RecordNotFound
+     flash[:notice] = "Compte inexistant"
+     redirect_to users_login_path
   end
 
   def admin_exclusive

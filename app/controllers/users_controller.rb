@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   end
 
   def login
+    not_logged_in
   end
 
   def check
@@ -36,6 +37,7 @@ class UsersController < ApplicationController
   end
 
   def logout
+    logged_in
     session[:user_id] = nil
     redirect_to "/users/login"
   end
