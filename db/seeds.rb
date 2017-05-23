@@ -39,10 +39,10 @@ test3 = Test.create(title: 'Conjugation', test_date: '15/01/2018', teacher_id: t
 test4 = Test.create(title: 'Conjugaison', test_date: '15/01/2018', teacher_id: teacher4.id, subject_id: subject4.id)
 test5 = Test.create(title: 'La 2e Guerre Mondiale', test_date: '15/01/2018', teacher_id: teacher5.id, subject_id: subject5.id)
 
-note1 = Note.create(note: 10, teacher_id: teacher1.id, student_id: student1.id, subject_id: subject1.id)
-note2 = Note.create(note: 9, teacher_id: teacher2.id, student_id: student2.id, subject_id: subject2.id)
-note3 = Note.create(note: 8, teacher_id: teacher3.id, student_id: student3.id, subject_id: subject3.id)
-note4 = Note.create(note: 7, teacher_id: teacher4.id, student_id: student4.id, subject_id: subject4.id)
-note5 = Note.create(note: 6, teacher_id: teacher5.id, student_id: student5.id, subject_id: subject5.id)
+note1 = Note.create(note: 10, teacher_id: teacher1.id, student_id: student1.id, subject_id: subject1.id, test_id: test1.id)
+note2 = Note.create(note: 9, teacher_id: teacher2.id, student_id: student2.id, subject_id: subject2.id, test_id: test2.id)
+note3 = Note.create(note: 8, teacher_id: teacher3.id, student_id: student3.id, subject_id: subject3.id, test_id: test3.id)
+note4 = Note.create(note: 7, teacher_id: teacher4.id, student_id: student4.id, subject_id: subject4.id, test_id: test4.id)
+note5 = Note.create(note: 6, teacher_id: teacher5.id, student_id: student5.id, subject_id: subject5.id, test_id: test5.id)
 
 
