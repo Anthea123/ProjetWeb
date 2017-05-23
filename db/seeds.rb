@@ -45,4 +45,8 @@ note3 = Note.create(note: 8, teacher_id: teacher3.id, student_id: student3.id, s
 note4 = Note.create(note: 7, teacher_id: teacher4.id, student_id: student4.id, subject_id: subject4.id, test_id: test4.id)
 note5 = Note.create(note: 6, teacher_id: teacher5.id, student_id: student5.id, subject_id: subject5.id, test_id: test5.id)
 
-
+permitedteacher1 = PermitedTeacher.create(username: 'prof6', password: 'prof6', name: 'Prof6', surname: 'Prof6', email: 'prof6@prof.com')
+permitedteacher1 = PermitedTeacher.create(username: 'prof7', password: 'prof7', name: 'Prof7', surname: 'Prof7', email: 'prof6@prof.com')
+permitedteacher1 = PermitedTeacher.create(username: 'prof8', password: 'prof8', name: 'Prof8', surname: 'Prof8', email: 'prof6@prof.com')
+permitedteacher1 = PermitedTeacher.create(username: 'prof9', password: 'prof9', name: 'Prof9', surname: 'Prof9', email: 'prof6@prof.com')
+permitedteacher1 = PermitedTeacher.create(username: 'prof10', password: 'prof10', name: 'Prof10', surname: 'Prof10', email: 'prof6@prof.com')
