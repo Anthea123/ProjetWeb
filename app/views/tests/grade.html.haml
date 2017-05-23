@@ -20,3 +20,5 @@
         %input{:name => "subject_id", :type => "hidden", :value => @test.subject_id}
         %input{:name => "test_id", :type => "hidden", :value => @test.id}
         %input{:type => "submit", :value => "Valider"}
+
+= link_to('Retour', test_path(@test))

@@ -27,19 +27,19 @@
   %fieldset
     .form-group
       = form_tag 'invite', method: :post  do
-        %label.col-lg-5.control-label{:for => "inputName"}Name 
+        %label.col-lg-5.control-label{:for => "inputName"}Prénom
         .col-lg-2
           %input{:type => "text", :name => "name"}
     .form-group 
-      %label.col-lg-5.control-label{:for => "inputSurname"}Surname
+      %label.col-lg-5.control-label{:for => "inputSurname"}Nom
       .col-lg-2
         %input{:type => "text", :name => "surname"}
     .form-group  
-      %label.col-lg-5.control-label{:for => "inputEmailaddress"}Email address
+      %label.col-lg-5.control-label{:for => "inputEmailaddress"}Adresse mail
       .col-lg-2
         %input{:type => "email", :name => "email"}
     .form-group
       .col-lg-offset-5
         %input{:type => "submit", :value => "Inviter"}
 
-= link_to('home', "home")
+= link_to('Acceuil', "home")

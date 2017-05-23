@@ -1,3 +1,5 @@
+%h2 Éditer votre profil
+
 = form_tag user_path(@current_user), method: :patch do
   %p
     Nom
@@ -15,3 +17,5 @@
     %input{:type => "submit", :value => "Enregistrer les changements"}
     
 = button_to('Supprimer votre profil', user_path(@current_user), method: :delete, data: { confirm: 'Êtes-vous sûr?' })
+
+= link_to('Retour', user_path(@current_user))

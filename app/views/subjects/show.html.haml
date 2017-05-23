@@ -35,6 +35,6 @@
           = link_to('Ajouter', relations_path(@relation, :student_id => student.id, :subject_id => @subject.id), method: :post)
 
 
-= link_to 'Edit', edit_subject_path(@subject)
-= link_to 'Back', subjects_path
+= link_to('Modifier', edit_subject_path(@subject))
+= link_to('Retour', subjects_path)
 = link_to('Épreuves', subject_exams_path(@subject))

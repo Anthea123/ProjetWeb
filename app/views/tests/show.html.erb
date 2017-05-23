@@ -4,9 +4,9 @@
 
 <p> Date: <%= @test.test_date%> </p>
 
-<%= link_to 'Back', tests_path %> |
+<%= link_to 'Retour', tests_path %> |
 <% if @current_user.teacher? %>
-  <%= link_to 'Edit', edit_test_path(@test) %> |
+  <%= link_to 'Modifier', edit_test_path(@test) %> |
   <%= link_to 'Noter', test_grade_path(@test) %> 
 <% end %>
 

@@ -1,7 +1,7 @@
-<h1>Editing Test</h1>
+<h1>Modifier <%= @test.title%></h1>
 
 <%= render 'form', test: @test %>
 
-<%= link_to 'Show', @test %> |
+<%= link_to 'Montrer', @test %> |
 
-<%= link_to 'Back', tests_path %>
+<%= link_to 'Retour', request.referrer %>

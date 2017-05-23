@@ -12,11 +12,11 @@
       %td #{subject.end_date}
       - if @current_user.teacher?
         %td 
-          = link_to('Show', subject_path(subject))
+          = link_to('Montrer', subject_path(subject))
         %td 
           = link_to('Modifier', edit_subject_path(subject))
         %td 
-          = link_to('Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' })
+          = link_to('Détruire', subject, method: :delete, data: { confirm: 'Are you sure?' })
 
 - if @current_user.teacher?
   = link_to('Ajouter une matière', new_subject_path)

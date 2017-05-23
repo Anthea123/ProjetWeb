@@ -1,0 +1,22 @@
+%h2 Inscription
+
+= form_tag 'students/new', method: :post do
+  .form-horizontal
+    .form-group
+      %label.col-lg-5.control-label{:for => "inputName"} Name
+      %input{:type => "text", :name => "name"}
+    .form-group
+      %label.col-lg-5.control-label{:for => "inputSurname"} Surname
+      %input{:type => "text", :name => "surname"}
+    .form-group 
+      %label.col-lg-5.control-label{:for => "inputUsername"} Username
+      %input{:type => "text", :name => "username"}
+    .form-group 
+      %label.col-lg-5.control-label{:for => "inputPassword"} Password
+      %input{:type => "password", :name => "password"}
+    .form-group
+      %label.col-lg-5.control-label{:for => "inputEmailadress"} Email address
+      %input{:type => "email", :name => "email"}
+    .form-group
+      .col-lg-offset-5
+        %input{:type => "submit", :value => "S'inscrire"}
