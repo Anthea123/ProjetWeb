@@ -1,23 +1,5 @@
-%nav.navbar.navbar-default{:style => "background-color:#00bfff"}
-  .container-fluid
-    .navbar-header 
-      %button.navbar-toggle.collapsed{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
-        %span.sr-only Toggle navigation
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
-      %a.navbar-brand{:href => "http://localhost:3000/teachers/home"} Accueil
-    #bs-example-navbar-collapse-1.collapse.navbar-collapse
-      %ul.nav.navbar-nav
-        %li
-          %a{:href => "http://localhost:3000/permited_teachers/index"}
-            View requests
-            %span.sr-only (current)
-        %li
-          %a{:href => "#"} Etudiant
-      %ul.nav.navbar-nav.navbar-right
-        %li
-          %a{:href => "http://localhost:3000/users/logout"} Déconnexion
+
+%div{:style => "height:120px;"}
 
 
 
@@ -36,6 +18,10 @@
       Type de compte: #{@current_user.type}
 
 = link_to('Éditer', edit_user_path(@current_user.id))
+
+
+
+
 
 
 
